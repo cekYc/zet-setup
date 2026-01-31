@@ -1,0 +1,54 @@
+// 1. SAF FONKSIYON (Matematik)
+deterministic fn topla(a: i64, b: i64) -> i64 {
+    return a + b
+}
+
+// 2. YARDIMCI FONKSIYON
+nondeterministic fn veri_getir() -> Void {
+    // URL'i burada tanimladik
+    let url = "https://jsonplaceholder.typicode.com/todos/1"
+    
+    // DIKKAT: Eger burada "Istek: " + url yaparsak, 'url' degiskeni bu satirda OLUR (Move).
+    // Ve asagidaki HTTP.get(url) satirina kalmaz.
+    // O yuzden log mesajinda url'yi direkt yaziyoruz.
+    call DB.log("Istek atiliyor: https://jsonplaceholder.typicode.com/todos/1")
+    
+    // 'url' degiskeni hala canli, simdi kullanabiliriz.
+    let veri = call HTTP.get(url)
+    
+    // Gelen veriyi (JSON string) ekrana basalim
+    call DB.log("Gelen Veri Uzunlugu: " + veri)
+}
+
+// 3. ANA FONKSIYON
+nondeterministic fn main(args: Untrusted) -> Void {
+    
+    call DB.log("Gojo v4.6 baslatiliyor...")
+    
+    // --- TEMEL ---
+    let isim = "Misafir"
+    call DB.log("Hosgeldin " + isim)
+
+    // --- DIZILER ---
+    let sayilar = [10, 20, 30, 40]
+    let ilk = sayilar[0]
+    call DB.log("Dizi[0]: " + ilk)
+    
+    // --- DONGULER ---
+    for i in 0..3 {
+        let val = sayilar[i]
+        call DB.log("Dongu Degeri: " + val)
+    }
+
+    // --- ASENKRON ISLEMLER ---
+    scope WebIslemleri {
+        // Hata veren blok yerine duzeltilmis fonksiyonu cagiriyoruz
+        spawn veri_getir()
+        
+        spawn DB.log("Bu mesaj HTTP cevabini beklemeden yazilir!")
+    }
+
+    // --- MATEMATIK ---
+    let sonuc = topla(500, 500)
+    call DB.log("Toplama Sonucu: " + sonuc)
+}
