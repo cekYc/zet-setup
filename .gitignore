@@ -5,8 +5,6 @@
 Cargo.lock
 
 # Windows
-*.exe
-*.bat
 *.cmd
 *.ps1
 
