@@ -4,7 +4,7 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                gojo: {
+                zet: {
                     bg: '#050505',
                     card: '#0F0F12',
                     border: '#27272a',
