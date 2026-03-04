@@ -1,0 +1,12 @@
+body { background-color: #050505; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+.glow-text { text-shadow: 0 0 30px rgba(168, 85, 247, 0.6); }
+.code-block { background: #0a0a0c; border: 1px solid #27272a; border-radius: 0.5rem; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; overflow-x: auto; }
+.section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.05em; color: white; }
+.feature-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 2.5rem; border-radius: 1rem; }
+.feature-text { font-size: 1.1rem; line-height: 1.8; color: #9ca3af; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #a855f7; }

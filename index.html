@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zet Lang | Zero Trust Language</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js"></script>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 bg-[#050505]/90 backdrop-blur border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-2xl font-bold font-mono tracking-tighter text-white">
+                ZET<span class="text-zet-purple">_LANG</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#manifesto" class="hover:text-white transition">Manifesto</a>
+                <a href="#details" class="hover:text-white transition">Teknik Detaylar</a>
+                <a href="#roadmap" class="hover:text-white transition text-zet-purple">Roadmap</a>
+                <a href="https://github.com/cekYc" class="border border-white/10 px-4 py-2 rounded hover:bg-white/5 transition">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden pt-20">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/20 blur-[150px] rounded-full z-[-1]"></div>
+
+        <div class="inline-block px-4 py-2 bg-purple-900/30 border border-purple-500/30 rounded-full text-purple-300 text-sm font-mono mb-8">
+            v0.2.0 "Zero Trust" Release
+        </div>
+
+        <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-tight">
+            GÜVENLİĞİ <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500 glow-text">ŞANSA BIRAKMA.</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-12 font-light">
+            Zet; performansı <span class="text-white font-semibold">Rust</span>'tan, sadeliği <span class="text-white font-semibold">Python</span>'dan alan;
+            ama güvenliği geliştiricinin insafına bırakmayan bir Zero Trust dilidir.
+            <br><br>
+            <span class="text-white border-b border-zet-purple pb-1">Zet'in amacı, hataları yakalamak değil; hataların yazılmasını derleyici seviyesinde imkânsız kılmaktır.</span>
+        </p>
+
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+            
+            <a href="./ZetSetup.zip" download="Zet_v0.2_Setup.zip" class="group relative px-10 py-4 bg-zet-purple hover:bg-purple-700 text-white font-bold text-lg rounded-lg transition shadow-[0_0_20px_rgba(168,85,247,0.4)] flex items-center gap-3">
+                <i class="fa-brands fa-windows text-2xl"></i>
+                <div class="text-left">
+                    <div class="text-xs font-mono text-purple-200">Windows x64</div>
+                    <div>Motoru İndir (v0.2)</div>
+                </div>
+                <div class="absolute inset-0 rounded-lg ring-2 ring-white/20 group-hover:ring-white/40 transition"></div>
+            </a>
+
+            <a href="#details" class="px-10 py-4 bg-transparent border border-white/20 hover:bg-white/5 text-white font-bold text-lg rounded-lg transition">
+                Teknolojiyi İncele
+            </a>
+        </div>
+        
+        <p class="mt-6 text-xs text-gray-500 font-mono">
+            <span class="text-green-500">●</span> Stable Build | .zip (Portable) | Kurulum Gerektirmez
+        </p>
+
+    </section>
+
+    <div id="manifesto" class="border-t border-white/10 bg-[#08080a]">
+        
+        <section class="py-32 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="text-zet-purple font-mono text-sm mb-4 tracking-widest uppercase">Kanıt 1</div>
+                <h2 class="section-title">Hız (Performance)</h2>
+                <div class="feature-text space-y-6">
+                    <p>
+                        Biz sadece hızlı değiliz — <strong>native hızdayız.</strong>
+                        Zet bir sanal makine (VM) kullanmaz. Yazdığınız Zet kodu, dünyanın en optimize derleyicisi olan <strong>Rust/LLVM</strong> altyapısına çevrilerek doğrudan native binary üretilir.
+                    </p>
+                    <p>
+                        Yaptığımız CPU-bound testlerde (fib(40)):
+                    </p>
+                    <div class="bg-black/40 p-6 rounded-lg border border-white/10 font-mono text-sm">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-400">Go (GC Overhead)</span>
+                            <span class="text-gray-400">~444 ms</span>
+                        </div>
+                        <div class="w-full bg-gray-800 h-2 rounded mb-6"><div class="bg-gray-600 h-2 rounded w-[100%]"></div></div>
+                        
+                        <div class="flex justify-between mb-2">
+                            <span class="text-purple-300 font-bold">Zet (No GC)</span>
+                            <span class="text-purple-300 font-bold">~249 ms</span>
+                        </div>
+                        <div class="w-full bg-gray-800 h-2 rounded"><div class="bg-zet-purple h-2 rounded w-[56%] shadow-[0_0_15px_#a855f7]"></div></div>
+                    </div>
+                    <p>
+                        Bu fark bir optimizasyon numarası değil; <strong>GC'siz bellek modeli</strong> ve saf fonksiyon analizinin doğal sonucudur.
+                    </p>
+                </div>
+            </div>
+            <div class="code-block border-purple-500/20 shadow-2xl">
+                <div class="text-gray-500 mb-2">// Zet Benchmark — fib(40)</div>
+                <span class="text-purple-400">deterministic fn</span> fib(n: i64) -> i64 {<br>
+                &nbsp;&nbsp;<span class="text-purple-400">if</span> n <= 1 { <span class="text-purple-400">return</span> n }<br>
+                &nbsp;&nbsp;<span class="text-purple-400">return</span> fib(n-1) + fib(n-2)<br>
+                }
+            </div>
+        </section>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+        <section class="py-32 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 code-block border-red-500/20 shadow-2xl">
+                <div class="text-gray-500 mb-2">// Leke Analizi (Compile-Time)</div>
+                <span class="text-blue-400">nondeterministic fn</span> login(user: <span class="text-red-400">Untrusted</span>) -> Void {<br>
+                <br>
+                &nbsp;&nbsp;<span class="text-gray-500">// ❌ DERLEME HATASI: Untrusted veri validate edilmeden kullanılamaz</span><br>
+                &nbsp;&nbsp;<span class="text-red-400 line-through">call Database.query(user)</span><br>
+                <br>
+                &nbsp;&nbsp;<span class="text-purple-400">validate</span> user {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-400">success</span>: {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">// ✅ user artık güvenli (String)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call Database.query(user)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="text-zet-purple font-mono text-sm mb-4 tracking-widest uppercase">Kanıt 2</div>
+                <h2 class="section-title">Zero Trust — Leke Analizi</h2>
+                <div class="feature-text space-y-6">
+                    <p>
+                        Diğer dillerde şu soruyu sen sorarsın: <em>"Bu veri güvenli mi?"</em><br>
+                        <strong>Zet'te bu soruyu derleyici sorar.</strong>
+                    </p>
+                    <p>
+                        Zet'in Leke Analizi (Taint Analysis) motoru:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2 mt-2 text-gray-400">
+                        <li>Dış dünyadan gelen veriyi <strong>Untrusted</strong> olarak işaretler.</li>
+                        <li>Bu veri <strong>validate</strong> edilmeden DB'ye gidemez, Network'e çıkamaz.</li>
+                        <li>Türetilen veriler de (json, index) lekeyi miras alır.</li>
+                    </ul>
+                    <p class="border-l-4 border-red-500 pl-4 py-2 bg-red-900/10 text-white mt-4">
+                        Bu bir uyarı değildir. <strong>Derleme hatasıdır.</strong><br>
+                        Zet ile yazılmış bir kodda <em>"Yanlışlıkla güvensiz kod yazdım"</em> deme ihtimali yoktur.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+        <section class="py-32 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <div class="text-zet-purple font-mono text-sm mb-4 tracking-widest uppercase">Kanıt 3</div>
+                <h2 class="section-title">Akıllı Motor (Smart Codegen)</h2>
+                <div class="feature-text space-y-6">
+                    <p>
+                        Zet derleyicisi, kodunuzu anlar.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-400 mt-2"></i>
+                            <span>
+                                <strong>Saf Matematik (Deterministic):</strong> Async overhead tamamen kaldırılır. Senkron, saf makine kodu üretilir.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-400 mt-2"></i>
+                            <span>
+                                <strong>I/O İşlemi (Nondeterministic):</strong> Otomatik olarak <strong>async/await</strong> moduna geçilir. Sen async yazmakla uğraşmazsın, Zet senin yerine karar verir.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-green-400 mt-2"></i>
+                            <span>
+                                <strong>call Keyword:</strong> Nondeterministik fonksiyona <code>call</code> kullanmazsan — derleme hatası. Deterministik fonksiyona <code>call</code> kullanırsan — derleme hatası.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             <div class="code-block border-blue-500/20 shadow-2xl">
+                <div class="text-gray-500 mb-2">// Smart Codegen Örneği</div>
+                <span class="text-purple-400">deterministic fn</span> mat() -> i64 {<br>
+                &nbsp;&nbsp;<span class="text-gray-500">// -> No Async Overhead</span><br>
+                &nbsp;&nbsp;<span class="text-purple-400">return</span> 2 + 2<br>
+                }<br><br>
+                <span class="text-blue-400">nondeterministic fn</span> api() -> Void {<br>
+                &nbsp;&nbsp;<span class="text-gray-500">// -> Auto Async/Await</span><br>
+                &nbsp;&nbsp;<span class="text-purple-400">call</span> HTTP.get(<span class="text-green-300">"url"</span>)<br>
+                }
+            </div>
+        </section>
+
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+        <section class="py-32 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 code-block border-green-500/20 shadow-2xl">
+                <div class="text-gray-500 mb-2">// Structured Concurrency</div>
+                <span class="text-blue-400">nondeterministic fn</span> main(args: <span class="text-red-400">Untrusted</span>) -> Void {<br>
+                <br>
+                &nbsp;&nbsp;<span class="text-gray-500">// ❌ DERLEME HATASI: spawn scope dışında kullanılamaz</span><br>
+                &nbsp;&nbsp;<span class="text-red-400 line-through">spawn DB.log("yasak!")</span><br>
+                <br>
+                &nbsp;&nbsp;<span class="text-purple-400">scope</span> Islerim {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">// ✅ spawn sadece scope içinde</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-400">spawn</span> veri_getir()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-400">spawn</span> DB.log("paralel!")<br>
+                &nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;<span class="text-gray-500">// Scope kapandı — tüm işçiler bitti, zombie yok.</span><br>
+                }
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="text-zet-purple font-mono text-sm mb-4 tracking-widest uppercase">Kanıt 4</div>
+                <h2 class="section-title">Structured Concurrency</h2>
+                <div class="feature-text space-y-6">
+                    <p>
+                        Diğer dillerde <code>spawn</code> veya <code>go</code> çağırırsın ve umudu bırakırsın.<br>
+                        <strong>Zet'te paralel iş sadece scope içinde başlatılır.</strong>
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2 mt-2 text-gray-400">
+                        <li><code>spawn</code> scope dışında kullanılamaz — <strong>derleme hatası</strong>.</li>
+                        <li>Scope kapanmadan program ilerlemez — tüm <code>JoinHandle</code>'lar await edilir.</li>
+                        <li>Zombie process, orphan thread oluşması <strong>yapısal olarak imkânsız</strong>dır.</li>
+                    </ul>
+                    <p class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10 text-white mt-4">
+                        Concurrency güvenliği, geliştirici disiplinine değil — <strong>derleyici kurallarına</strong> bağlıdır.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section id="details" class="py-24 bg-[#0a0a0c]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white">Sistem Mimarisi ve Detaylar</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <div class="feature-card">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-purple-500">01.</span> Sözdizimi (Syntax)
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-green-400 font-bold mb-2 uppercase text-sm">Mevcut Durum (v0.2)</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-400 text-sm">
+                            <li><strong>Değişkenler:</strong> <code>let x = 10</code> ile tanımlanır.</li>
+                            <li><strong>Tipler:</strong> <code>i64</code> (Tamsayı), <code>String</code> (Metin), <code>Untrusted</code> (Kirli Veri), <code>Void</code>, <code>Array&lt;T&gt;</code>.</li>
+                            <li><strong>Kontrol:</strong> <code>if/else</code>, <code>while</code> ve aralıklı <code>for (0..10)</code> döngüsü.</li>
+                            <li><strong>Fonksiyonlar:</strong> <code>deterministic fn</code> ve <code>nondeterministic fn</code> zorunlu ayrımı.</li>
+                            <li><strong>Güvenlik:</strong> <code>validate</code> bloğu, <code>call</code> keyword — derleyici zorlar.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-yellow-400 font-bold mb-2 uppercase text-sm">Planlanan (v0.3+)</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-400 text-sm">
+                            <li><strong>Boolean:</strong> <code>true/false</code> literal var ama tip olarak <code>i64 (0/1)</code> kullanıyoruz.</li>
+                            <li><strong>Float:</strong> Yok. Bilimsel hesaplama için şart.</li>
+                            <li><strong>Mutation:</strong> <code>liste[0] = 5</code> diyemiyoruz. Bunu yaparsak tam bir dil oluruz.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-purple-500">02.</span> Bellek & Scope
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-white font-bold mb-2 text-sm">Bellek Yönetimi</h4>
+                        <p class="text-gray-400 text-sm mb-2">
+                            <strong>GC Yok:</strong> Garbage Collector kullanmıyoruz. Değişken scope'un sonuna (<code>}</code>) geldiği an Rust'ın Drop mekanizması devreye girer.
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            <strong>Manuel Yok:</strong> malloc veya free yok. Derleyici halleder.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-white font-bold mb-2 text-sm">Structured Concurrency (v0.2 ✅)</h4>
+                        <p class="text-gray-400 text-sm mb-2">
+                            <strong>JoinHandle:</strong> Scope içindeki her <code>spawn</code> bir <code>JoinHandle</code> üretir. Scope kapanmadan önce tüm handle'lar await edilir.
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            <strong>Zombie Process İmkânsız:</strong> <code>spawn</code> scope dışında kullanılamaz — derleyici reddeder. Scope kapanmadan program ilerlemez.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 feature-card">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-4">Validate Mekanizması (v0.2 ✅)</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                <strong>Untrusted Tipi:</strong> Dışarıdan gelen veri Untrusted tipindedir. Derleyicinin Taint Analysis motoru, derleme zamanında tüm akışı tarar. Eğer Untrusted bir veri, validate edilmeden herhangi bir yere giderse derlemeyi reddeder. Türevleri de (json, index) lekelenir.
+                                <br><br>
+                                <strong>v0.2'de:</strong> Validate bloğu gerçek <code>match Ok/Err</code> kodu üretir. Başarılı dalda değişken <code>String (Trusted)</code> olur.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-4">Determinizm Analizi (v0.2 ✅)</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                <strong>Derleyici Kontrolü:</strong> <code>deterministic</code> fonksiyon içinde I/O, HTTP, Console çağrısı yapılamaz — derleme hatası.
+                                <br><br>
+                                <strong>call Keyword:</strong> Nondeterministik fonksiyona <code>call</code> kullanmak zorunlu. Deterministik fonksiyona <code>call</code> kullanmak yasak. İkisi de derleme zamanında zorlanır.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-24 bg-gradient-to-b from-[#0a0a0c] to-[#150520] border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center text-white">Yol Haritası (Roadmap)</h2>
+
+            <div class="relative border-l-2 border-purple-500/30 ml-4 md:ml-0 space-y-16">
+                
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
+                    <h3 class="text-2xl font-bold text-white mb-2">v0.2 "ZERO TRUST" — TAMAMLANDI ✅</h3>
+                    <div class="text-green-400 font-mono text-sm mb-6">Tamamlandı | Derleyici Güvenliği</div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-green-900/20 p-4 rounded border border-green-500/20">
+                            <span class="text-green-400">✅</span> <strong class="text-white">Taint Analysis:</strong> <span class="text-gray-400">Untrusted veri validate edilmeden kullanılamaz.</span>
+                        </div>
+                        <div class="bg-green-900/20 p-4 rounded border border-green-500/20">
+                            <span class="text-green-400">✅</span> <strong class="text-white">Determinism:</strong> <span class="text-gray-400">deterministic fn içinde I/O yapılamaz, call keyword zorlanır.</span>
+                        </div>
+                        <div class="bg-green-900/20 p-4 rounded border border-green-500/20">
+                            <span class="text-green-400">✅</span> <strong class="text-white">Structured Concurrency:</strong> <span class="text-gray-400">spawn sadece scope içinde, JoinHandle ile zombie-free.</span>
+                        </div>
+                        <div class="bg-green-900/20 p-4 rounded border border-green-500/20">
+                            <span class="text-green-400">✅</span> <strong class="text-white">Benchmark:</strong> <span class="text-gray-400">fib(40) = 249ms — Go'dan %44 hızlı.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></span>
+                    <h3 class="text-2xl font-bold text-white mb-2">FAZ 1: TEMEL ERGONOMİ</h3>
+                    <div class="text-purple-400 font-mono text-sm mb-6">1-2 Hafta | Öncelik: Kritik</div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-black/40 p-5 rounded border border-white/10">
+                            <h4 class="font-bold text-white mb-2">1. Boolean Tipi</h4>
+                            <p class="text-gray-400 text-sm mb-3">Şu an i64 kullanıyoruz. Gerçek Bool tipi eklenecek.</p>
+                            <div class="code-block p-3">
+                                <span class="text-purple-400">let</span> aktif: Bool = <span class="text-green-400">true</span><br>
+                                <span class="text-purple-400">let</span> kapali: Bool = <span class="text-green-400">false</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-black/40 p-5 rounded border border-white/10">
+                            <h4 class="font-bold text-white mb-2">2. Dizi Mutasyonu</h4>
+                            <p class="text-gray-400 text-sm mb-3">AST'ye IndexAssignment eklenecek.</p>
+                            <div class="code-block p-3">
+                                <span class="text-purple-400">let</span> sayilar = [1, 2, 3]<br>
+                                sayilar[0] = 10 <span class="text-gray-500">// ✅ Bu çalışmalı!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500"></span>
+                    <h3 class="text-2xl font-bold text-white mb-2">FAZ 2: MODÜLERLİK</h3>
+                    <div class="text-blue-400 font-mono text-sm mb-6">2-3 Hafta | Gerçek Projeler İçin</div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-gray-300">
+                            <strong>Import Sistemi:</strong> <code>use http</code>, <code>use math</code> gibi komutlar.
+                        </p>
+                        <p class="text-gray-300">
+                            <strong>Çok Dosyalı Derleme:</strong> Derleyicinin diğer .zt dosyalarını da bulup birleştirmesi (Linker mantığı).
+                        </p>
+                        <div class="code-block p-3">
+                            use ./moduller/database<br>
+                            use ./utils/helpers
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500"></span>
+                    <h3 class="text-2xl font-bold text-white mb-2">FAZ 3: STANDART KÜTÜPHANE</h3>
+                    <div class="text-cyan-400 font-mono text-sm mb-6">3-4 Hafta | Kullanılabilirlik</div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/5 p-3 rounded text-sm text-gray-300">📁 <strong>io</strong> (Dosya okuma)</div>
+                        <div class="bg-white/5 p-3 rounded text-sm text-gray-300">🌐 <strong>http</strong> (Server/Client)</div>
+                        <div class="bg-white/5 p-3 rounded text-sm text-gray-300">📦 <strong>json</strong> (Serileştirme)</div>
+                        <div class="bg-white/5 p-3 rounded text-sm text-gray-300">⏱️ <strong>time</strong> (Tarih/Saat)</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-black text-center border-t border-white/10">
+        <p class="text-gray-500 text-sm mb-2">&copy; 2026 Zet Lang Project — Zero Trust Language.</p>
+        <p class="text-xs text-gray-600 font-mono">Developed by <span class="text-zet-purple font-bold">Ceky</span></p>
+    </footer>
+
+</body>
+</html>
