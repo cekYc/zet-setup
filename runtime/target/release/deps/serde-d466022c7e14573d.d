@@ -1,0 +1,14 @@
+C:\Dosyalarım\gojo-compiler\ZetSetup\runtime\target\release\deps\serde-d466022c7e14573d.d: C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Dosyalarım\gojo-compiler\ZetSetup\runtime\target\release\build\serde-31e54402bbac280f\out/private.rs
+
+C:\Dosyalarım\gojo-compiler\ZetSetup\runtime\target\release\deps\libserde-d466022c7e14573d.rlib: C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Dosyalarım\gojo-compiler\ZetSetup\runtime\target\release\build\serde-31e54402bbac280f\out/private.rs
+
+C:\Dosyalarım\gojo-compiler\ZetSetup\runtime\target\release\deps\libserde-d466022c7e14573d.rmeta: C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Dosyalarım\gojo-compiler\ZetSetup\runtime\target\release\build\serde-31e54402bbac280f\out/private.rs
+
+C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs:
+C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs:
+C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs:
+C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs:
+C:\Users\erayc\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs:
+C:\Dosyalarım\gojo-compiler\ZetSetup\runtime\target\release\build\serde-31e54402bbac280f\out/private.rs:
+
+# env-dep:OUT_DIR=C:\\Dosyalarım\\gojo-compiler\\ZetSetup\\runtime\\target\\release\\build\\serde-31e54402bbac280f\\out

@@ -1,0 +1,71 @@
+// ============================================
+// Zet Lang v0.2 - Ornek Program
+// "Zero Trust — Guvenmedigin Kodu Derleme"
+// ============================================
+
+// 1. SAF FONKSIYON (Deterministic)
+// Daima ayni girdi = ayni cikti. Side-effect yok.
+deterministic fn topla(a: i64, b: i64) -> i64 {
+    return a + b
+}
+
+// 2. SAF FONKSIYON (Fibonacci Benchmark)
+deterministic fn fib(n: i64) -> i64 {
+    if n <= 1 {
+        return n
+    }
+    return fib(n - 1) + fib(n - 2)
+}
+
+// 3. YARDIMCI FONKSIYON (Nondeterministic — I/O yapar)
+nondeterministic fn veri_getir() -> Void {
+    let url = "https://jsonplaceholder.typicode.com/todos/1"
+    call DB.log("Istek atiliyor...")
+    let veri = call HTTP.get(url)
+
+    // HTTP'den gelen veri Untrusted'dir — validate etmeden kullanilamaz
+    validate veri {
+        success: {
+            call DB.log("Gelen Veri: " + veri)
+        }
+    }
+}
+
+// 4. ANA FONKSIYON
+nondeterministic fn main(args: Untrusted) -> Void {
+
+    call DB.log("Zet v0.2 baslatiliyor...")
+
+    // ---ARGS GUVENLIK: args Untrusted gelir, validate sart ---
+    validate args {
+        success: {
+            call DB.log("Hosgeldin: " + args)
+        }
+    }
+
+    // --- DIZILER ---
+    let sayilar = [10, 20, 30, 40]
+    let ilk = sayilar[0]
+    call DB.log("Dizi[0]: " + ilk)
+
+    // --- DONGULER ---
+    for i in 0..3 {
+        let val = sayilar[i]
+        call DB.log("Dongu Degeri: " + val)
+    }
+
+    // --- STRUCTURED CONCURRENCY: spawn SADECE scope icinde ---
+    scope WebIslemleri {
+        spawn veri_getir()
+        spawn DB.log("Bu mesaj paralel yazilir!")
+    }
+    // Scope kapaninca tum isler bitmis olur — zombie process imkansiz.
+
+    // --- SAF MATEMATIK (No async overhead) ---
+    let sonuc = topla(500, 500)
+    call DB.log("Toplama Sonucu: " + sonuc)
+
+    // --- BENCHMARK ---
+    let f = fib(30)
+    call DB.log("fib(30) = " + f)
+}
