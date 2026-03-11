@@ -1,0 +1,19 @@
+# .gitignore for GojoSetup
+# Rust/Cargo build outputs
+/target/
+**/target/
+**/*.rs.bk
+
+# Windows
+*.cmd
+*.ps1
+
+# Logs
+*.log
+
+# Misc
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/

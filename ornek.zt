@@ -1,0 +1,88 @@
+// =============================================
+//   ZET LANG v0.3 — Örnek Program
+//   Zero Trust Language
+// =============================================
+
+// --- 1. Deterministik Fonksiyon (Saf Matematik) ---
+deterministic fn toplama(a: i64, b: i64) -> i64 {
+    return a + b
+}
+
+deterministic fn faktoriyel(n: i64) -> i64 {
+    if n <= 1 {
+        return 1
+    }
+    return n * faktoriyel(n - 1)
+}
+
+deterministic fn daire_alani(r: f64) -> f64 {
+    const PI = 3.14159265
+    return PI * r * r
+}
+
+// --- 2. Tuple Kullanan Fonksiyon ---
+deterministic fn koordinat() -> (i64, i64) {
+    return (10, 20)
+}
+
+// --- 3. Ana Program (Nondeterministik) ---
+nondeterministic fn main() -> Void {
+    println("=== Zet Lang v0.3 Ornekleri ===")
+    println("")
+
+    // Degiskenler ve Tipler
+    let tam = 42
+    let ondalik = 3.14
+    let aktif = true
+    let harf = 'Z'
+    const VERSIYON = 3
+
+    println("Tam sayi: ${tam}")
+    println("Ondalik: ${ondalik}")
+    println("Boolean: ${aktif}")
+    println("Karakter: ${harf}")
+    println("Sabit: ${VERSIYON}")
+    println("")
+
+    // Aritmetik
+    let sonuc = toplama(10, 20)
+    println("10 + 20 = ${sonuc}")
+    println("5! = " + faktoriyel(5))
+    println("Daire alani (r=5): " + daire_alani(5.0))
+    println("")
+
+    // Operatorler
+    println("10 % 3 = " + 10 % 3)
+    println("true && false = " + (true && false))
+    println("true || false = " + (true || false))
+    println("!true = " + !true)
+    println("")
+
+    // Tuple
+    let koor = koordinat()
+    println("Koordinat: (" + koor.0 + ", " + koor.1 + ")")
+    println("")
+
+    // Dizi ve Dongu
+    let sayilar = [10, 20, 30, 40, 50]
+    print("Sayilar: ")
+    for i in 0..5 {
+        print(sayilar[i])
+        print(" ")
+    }
+    println("")
+
+    // Break ve Continue
+    print("Tek sayilar (0-10): ")
+    for i in 0..10 {
+        if i % 2 == 0 {
+            continue
+        }
+        print(i)
+        print(" ")
+    }
+    println("")
+
+    println("")
+    println("=== Program Tamamlandi ===")
+}

@@ -1,0 +1,3 @@
+nondeterministic fn main() -> Void {
+    println("Merhaba farkli klasorden!")
+}
